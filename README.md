@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>ENTER YOUR NAME       : LOKESH REDDY A</H3>
+<H3>ENTER YOUR REGISTER NO: 212223040104</H3>
+<H3>EX.NO: 1</H3>
+<H3>DATE: 25-08-2024</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,75 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```py
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+data = pd.read_csv("Churn_Modelling.csv")
+data
+data.head()
+
+X=data.iloc[:,:-1].values
+X
+
+y=data.iloc[:,-1].values
+y
+
+data.isnull().sum()
+
+data.duplicated()
+
+data.describe()
+
+data = data.drop(['Surname', 'Geography','Gender'], axis=1)
+data.head()
+
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
+X_train
+
+X_test
+
+print("Lenght of X_test ",len(X_test))
 
 
+```
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### Dataset:
+![image](https://github.com/user-attachments/assets/e1fd27bb-54a9-4900-aeb6-b44231b5c2de)
+
+### X Values:
+![image](https://github.com/user-attachments/assets/599f5c7c-2ca6-44dd-ba05-dc5ad4342efc)
+
+### Y Values:
+![image](https://github.com/user-attachments/assets/6f322ffe-3205-4f07-89d9-3da6224ffe29)
+
+### Null Values:
+![image](https://github.com/user-attachments/assets/c0c0b7b7-bd5d-4733-a1c6-f8c50a8093bb)
+
+### Duplicated Values:
+![image](https://github.com/user-attachments/assets/a03ca408-08bd-4c6b-af9f-f4cbb7e2be67)
+
+
+### Description:
+![image](https://github.com/user-attachments/assets/f5be5df1-3299-477c-82bb-0580da034d72)
+
+### Normalized Dataset:
+![image](https://github.com/user-attachments/assets/3da4419a-8400-4a10-b2eb-15f8afbea4bf)
+
+### Training Data:
+![image](https://github.com/user-attachments/assets/458410fe-6641-4c18-b675-6f0daaf6c296)
+
+### Testing Data:
+![image](https://github.com/user-attachments/assets/34a14ae0-7534-4ef5-a99a-dfaa0f63eada)
+
 
 
 ## RESULT:
